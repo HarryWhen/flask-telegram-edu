@@ -1,2 +1,2 @@
-def get_valid_name(invalid_name):
-    return "_".join(invalid_name.split("."))
+def get_module_name(__name__: str):
+    return __name__.split(".")[-1]

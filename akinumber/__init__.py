@@ -1,14 +1,15 @@
 from flask import Flask
 
-from utils import get_valid_name
+from . import core, db
+from .blueprints import bp
 
-from . import db, game
 
-
-def create_app():
-    app = Flask(get_valid_name(__loader__.name))
+def create_app() -> Flask:
+    app = Flask(__name__)
 
     db.init_app(app)
-    app.register_blueprint(game.bp)
+    core.init_app(app)
+
+    app.register_blueprint(bp)
 
     return app
