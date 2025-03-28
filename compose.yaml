@@ -1,7 +1,12 @@
 include:
-   - infra.yaml
+  - infra.yaml
 services:
   web:
     build: .
+    stop_signal: SIGINT
     ports:
-      - 5000:5000
+      - 127.0.0.1:5000:5000
+    volumes:
+      - .:/app
+    depends_on:
+      - db
