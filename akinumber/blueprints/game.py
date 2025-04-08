@@ -14,7 +14,7 @@ bp = Blueprint(
 
 @bp.route("/start")
 def start_game(user_id: int) -> Literal["Success"]:
-    game.init_game()
+    game.init_game(user_id)
     return "Success"
 
 
