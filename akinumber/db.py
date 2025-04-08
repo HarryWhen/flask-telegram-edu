@@ -9,14 +9,14 @@ def init_app(app: Flask):
 
 
 def _init_db_context():
-    g._mongo_client = MongoClient("db")
-    g.db = g._mongo_client.app
+    g._client = MongoClient("db")
+    g.db = g._client.app
     g.profiles = g.db.profiles
 
 
 def _close_db(e=None):
-    if "_mongo_client" in g:
-        g._mongo_client.close()
+    if "_client" in g:
+        g._client.close()
 
 
 def get_db() -> database.Database[_DocumentType]:
