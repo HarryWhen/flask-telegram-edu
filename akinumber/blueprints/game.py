@@ -1,4 +1,4 @@
-from typing import Literal, LiteralString
+from typing import Literal
 
 from flask import Blueprint
 
@@ -19,12 +19,12 @@ def start_game(user_id: int) -> Literal["Success"]:
 
 
 @bp.route("/make-guess")
-def make_guess(user_id: int) -> LiteralString:
-    return "You could make a guess here, but this feature isn't currently implemented"
+def make_guess(user_id: int) -> Literal["Fail"]:
+    raise Exception("You could make a guess here, but this feature isn't currently implemented")
+    return "Fail"
 
 
 @bp.route("/stop")
-def force_stop(user_id: int) -> LiteralString:
-    return (
-        "The game should be stopped here, but this feature isn't currently implemented"
-    )
+def force_stop(user_id: int) -> Literal["Fail"]:
+    raise Exception("The game should be stopped here, but this feature isn't currently implemented")
+    return "Fail"
